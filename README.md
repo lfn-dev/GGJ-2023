@@ -1,6 +1,6 @@
 # ggj-2023
 Repository for the project developed in the Global Game Jam 2023, using Unity Engine.
-Made with love by <>
+Made with love by <Lucas Lucas and JOJO and Samaan and Julia>
 
 The game will be available on <>
 
