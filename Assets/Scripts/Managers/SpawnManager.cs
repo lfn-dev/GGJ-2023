@@ -78,7 +78,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator Spawner(){
         while(isCounting){
             
-            tokens = CurrentLevelTime() * tokensPerSecond;
+            tokens = startTokens + CurrentLevelTime() * tokensPerSecond;
 
             float totalTokens = tokens;
 
@@ -88,7 +88,7 @@ public class SpawnManager : MonoBehaviour
                         int spawnQt = (int)(totalTokens / (int)obj.spawnCost);
                         totalTokens -= spawnQt * (int)obj.spawnCost;
 
-                        Vector3 spawnPos = NearestSpawn(gameManager.GetPlayer().transform.position);
+                        Vector3 spawnPos = gameManager.NearestTransform(gameManager.GetPlayer().transform, spawnPositions).position;
 
                         CreateObj(spawnPos, obj.prefab, spawnQt);
                     }
@@ -101,16 +101,16 @@ public class SpawnManager : MonoBehaviour
     }
 
 
-    //retorna o spawn mais próximo de 'reference'
-    Vector3 NearestSpawn(Vector3 reference){
+    //retorna a posição mais próxima de 'reference'
+    Vector3 NearestPosition(Vector3 reference, Vector3[] list){
         int nearIndex = 0;
 
-        if(spawnPositions.Length > 0){
+        if(list.Length > 0){
             float smallest = float.MaxValue;
             
-            for (int i = 0; i < spawnPositions.Length; i++)
+            for (int i = 0; i < list.Length; i++)
             {
-                float dist = (reference - spawnPositions[i].position).sqrMagnitude;
+                float dist = (reference - list[i]).sqrMagnitude;
                 if(dist < smallest){
                     nearIndex = i;
                     smallest = dist;
@@ -121,7 +121,7 @@ public class SpawnManager : MonoBehaviour
             return reference;
         }
 
-        return spawnPositions[nearIndex].position;
+        return list[nearIndex];
     }
 
     void CreateObj(Vector3 pos, GameObject obj, int qt){
@@ -144,5 +144,5 @@ public class SpawnManager : MonoBehaviour
             Gizmos.DrawWireSphere(pos.position, spawnRadius);
         }
     }
-#endif
+    #endif
 }
