@@ -40,9 +40,8 @@ public class CharacterStats : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         if(!collision.transform.CompareTag(transform.tag)){
-            CharacterStats characterStats = collision.gameObject.GetComponent<CharacterStats>();
-            if(characterStats){
-                Hitted(characterStats.damage.GetValue());
+            if(collision.gameObject.TryGetComponent(out CharacterStats characterStats)){
+                Hitted(characterStats.damage.GetValue());    
             }
         }
     }
