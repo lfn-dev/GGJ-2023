@@ -9,55 +9,57 @@ public class Esposa : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask oqueEChao, oqueEPlayer;
+    public LayerMask whatIsGround, whatIsPlayer;
 
+    
+    //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
 
-    bool jaACasou;
-
+    //States
     public float sightRange, attackRange;
-    public bool playerIsInSigthRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        playerIsInSigthRange = Physics.CheckSphere(transform.position, sightRange, oqueEPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, oqueEPlayer);
+        //Check for sight and attack range
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerIsInSigthRange && !playerInAttackRange) Patroling();
-        if (playerIsInSigthRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerIsInSigthRange) Casaram();
+        if (!playerInSightRange && !playerInAttackRange) Patroling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange && playerInSightRange) Casar();
     }
 
     private void Patroling()
     {
-        if (!walkPointSet) SceareachWalkingPoint();
-        if (walkPointSet) agent.SetDestination(walkPoint);
+        if (!walkPointSet) SearchWalkPoint();
 
-        Vector3 distanceToWalkingPoint = transform.position - walkPoint;
+        if (walkPointSet)
+            agent.SetDestination(walkPoint);
 
-        if (distanceToWalkingPoint.magnitude < 1f)
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
-
     }
-
-    public void SceareachWalkingPoint()
+    private void SearchWalkPoint()
     {
-        float randomz = Random.Range(-walkPointRange, walkPointRange);
-        float randomx = Random.Range(-walkPointRange, walkPointRange);
+        //Calculate random point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z + randomz);
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, oqueEChao))
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
@@ -66,8 +68,17 @@ public class Esposa : MonoBehaviour
         agent.SetDestination(player.position);
     }
 
-    private void Casaram()
+    private void Casar()
     {
+        agent.SetDestination(player.position);
+    }
+  
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
