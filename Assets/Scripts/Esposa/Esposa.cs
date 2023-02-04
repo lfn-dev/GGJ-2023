@@ -46,7 +46,7 @@ public class Esposa : MonoBehaviour
         Vector3 distanceToWalkingPoint = transform.position - walkPoint;
 
         if (distanceToWalkingPoint.magnitude < 1f)
-            walkPoint = false;
+            walkPointSet = false;
 
     }
 
@@ -55,7 +55,7 @@ public class Esposa : MonoBehaviour
         float randomz = Random.Range(-walkPointRange, walkPointRange);
         float randomx = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(trasform.position.x + randomx, transform.position.y, transform.position.z + randomz);
+        walkPoint = new Vector3(transform.position.x + randomx, transform.position.y, transform.position.z + randomz);
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, oqueEChao))
             walkPointSet = true;
