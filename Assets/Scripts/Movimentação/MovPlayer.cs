@@ -7,7 +7,9 @@ public class MovPlayer : MonoBehaviour
 {
     public float velocidade;
     public Animator anim;
+    public SpriteRenderer player;
     private Vector2 move;
+    private bool olhandoDir = true;
 
 
     public void OnMove(InputAction.CallbackContext context)
@@ -25,6 +27,9 @@ public class MovPlayer : MonoBehaviour
     void Update()
     {
         moverPlayer();
+        Flip();
+        anim.SetFloat("Move", move.x);
+        anim.SetFloat("MoveY", move.y);
     }
 
    
@@ -32,7 +37,14 @@ public class MovPlayer : MonoBehaviour
     public void moverPlayer()
     {
         Vector3 movment = new Vector3(move.x, 0f, move.y);
-
         transform.Translate(movment * velocidade * Time.deltaTime, Space.World);
+    }
+
+    public void Flip()
+    {
+        if (Input.GetKeyDown("d"))
+        {
+            player.flipX;
+        }
     }
 }
