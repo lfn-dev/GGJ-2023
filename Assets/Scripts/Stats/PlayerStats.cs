@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
-
+    [Space]
     public float invencibleTime = 0;
 
     private float lastTime;
@@ -28,7 +28,7 @@ public class PlayerStats : CharacterStats
         //player morreu
     }
 
-    public void Hitted(int damage){
+    public override void Hitted(int damage){
         if(Time.time - lastTime > invencibleTime){
 
             AddHealth(-damage);

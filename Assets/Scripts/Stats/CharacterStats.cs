@@ -32,4 +32,18 @@ public class CharacterStats : MonoBehaviour
         //this method will be overwritten
         Debug.Log(transform.name + " died.");
     }
+
+    public virtual void Hitted (int damage){
+        //Receber dano
+        AddHealth(-damage);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(!collision.transform.CompareTag(transform.tag)){
+            CharacterStats characterStats = collision.gameObject.GetComponent<CharacterStats>();
+            if(characterStats){
+                Hitted(characterStats.damage.GetValue());
+            }
+        }
+    }
 }

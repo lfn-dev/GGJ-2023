@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
     public float startTokens;
     public float tokensPerSecond;
     public float secondsPerWave;
+    public float spawnRadius;
     
     [Space]
     public Transform[] spawnPositions;
@@ -126,8 +127,9 @@ public class SpawnManager : MonoBehaviour
     void CreateObj(Vector3 pos, GameObject obj, int qt){
         for (int i = 0; i < qt; i++)
         {
-            GameObject.Instantiate(obj, pos, Quaternion.identity);
-            Debug.Log("Creating obj at:"+pos);
+            Vector3 offset = Random.insideUnitCircle * spawnRadius;
+
+            GameObject.Instantiate(obj, pos + offset, Quaternion.identity);
         }
     }
 
@@ -139,7 +141,7 @@ public class SpawnManager : MonoBehaviour
         //reachable area
         Gizmos.color = Color.blue;
         foreach (Transform pos in spawnPositions){
-            Gizmos.DrawWireSphere(pos.position, 1);
+            Gizmos.DrawWireSphere(pos.position, spawnRadius);
         }
     }
 #endif
