@@ -46,6 +46,8 @@ public class SpawnManager : MonoBehaviour
 
         currentLevel = 0;
         tokens = startTokens;
+
+        StartTimer();
     }
 
 
@@ -75,7 +77,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator Spawner(){
         while(isCounting){
             
-            tokens += Time.deltaTime * tokensPerSecond;
+            tokens = CurrentLevelTime() * tokensPerSecond;
 
             float totalTokens = tokens;
 
@@ -87,9 +89,7 @@ public class SpawnManager : MonoBehaviour
 
                         Vector3 spawnPos = NearestSpawn(gameManager.GetPlayer().transform.position);
 
-                        if (spawnPos != null){
-                            CreateObj(spawnPos, obj.prefab, spawnQt);
-                        }
+                        CreateObj(spawnPos, obj.prefab, spawnQt);
                     }
                 }
             }
@@ -105,12 +105,14 @@ public class SpawnManager : MonoBehaviour
         int nearIndex = 0;
 
         if(spawnPositions.Length > 0){
-            float dist = (reference - spawnPositions[0].position).sqrMagnitude;
+            float smallest = float.MaxValue;
             
-            for (int i = 1; i < spawnPositions.Length; i++)
+            for (int i = 0; i < spawnPositions.Length; i++)
             {
-                if((reference - spawnPositions[i].position).sqrMagnitude < dist){
+                float dist = (reference - spawnPositions[i].position).sqrMagnitude;
+                if(dist < smallest){
                     nearIndex = i;
+                    smallest = dist;
                 }
             }
         }
@@ -125,6 +127,7 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < qt; i++)
         {
             GameObject.Instantiate(obj, pos, Quaternion.identity);
+            Debug.Log("Creating obj at:"+pos);
         }
     }
 
