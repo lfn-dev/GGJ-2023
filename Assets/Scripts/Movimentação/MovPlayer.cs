@@ -7,20 +7,18 @@ public class MovPlayer : MonoBehaviour
 {
     public float velocidade;
     public Animator anim;
-    public SpriteRenderer player;
+    public GameObject player;
     private Vector2 move;
-    private bool olhandoDir = true;
+    public bool olhandoDir;
 
+    void Start()
+    {
+        olhandoDir = true;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
-    }
- 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -28,7 +26,8 @@ public class MovPlayer : MonoBehaviour
     {
         moverPlayer();
         Flip();
-        anim.SetFloat("Move", move.x);
+          
+        anim.SetFloat("MoveX", move.x);
         anim.SetFloat("MoveY", move.y);
     }
 
@@ -42,9 +41,15 @@ public class MovPlayer : MonoBehaviour
 
     public void Flip()
     {
-        if (Input.GetKeyDown("d"))
+        if (move.x > 0)
         {
-            player.flipX;
+            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
+
+        if (move.x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.5f , 0.5f , -0.5f);
+        }
+
     }
 }
