@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1555d980fef2f694c99c45926163af9e
+guid: 7fc6a90809547e549872945a855741d4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cenoura_0
+      name: musca_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 39
-        height: 43
+        width: 53
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7ebfeb453850ff40900dd8be8be4684
-      internalID: -1757412671
+      spriteID: 4168a1ed807750d49a9f86bc2a5353ac
+      internalID: -1493533037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cenoura_1
+      name: musca_1
       rect:
         serializedVersion: 2
-        x: 39
+        x: 53
         y: 0
-        width: 39
-        height: 43
+        width: 53
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41b2e10b63bf60040bccb9d2b67647f3
-      internalID: -1228995431
+      spriteID: 5b3fbacfcc272e6438fcb656b911795a
+      internalID: 1671589129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cenoura_2
+      name: musca_2
       rect:
         serializedVersion: 2
-        x: 78
+        x: 106
         y: 0
-        width: 39
-        height: 43
+        width: 53
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,29 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f531cb483eb98b4cae664815e18165f
-      internalID: -1373638746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cenoura_3
-      rect:
-        serializedVersion: 2
-        x: 117
-        y: 0
-        width: 39
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e9112c4145cc724783bedb32da6445a
-      internalID: 203665164
+      spriteID: ceb992f8b5721f6489138ae27eea5793
+      internalID: 956725088
       vertices: []
       indices: 
       edges: []
@@ -191,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1799ea5ed5506974a8bc5b93659b6e54
+    spriteID: 973020ef0cbe33449922ac0c90214853
     internalID: 0
     vertices: []
     indices: 
@@ -199,10 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cenoura_0: -1757412671
-      cenoura_2: -1373638746
-      cenoura_3: 203665164
-      cenoura_1: -1228995431
+      musca_0: -1493533037
+      musca_1: 1671589129
+      musca_2: 956725088
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
