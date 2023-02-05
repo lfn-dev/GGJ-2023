@@ -8,6 +8,8 @@ public class PlayerStats : CharacterStats
 
     private float lastTime;
 
+    public int filhos;
+
     protected override void Start (){
         base.Start();
         lastTime = Time.time;
@@ -23,7 +25,14 @@ public class PlayerStats : CharacterStats
 
     public override void Die()
     {
-        //player morreu
+        if(filhos >= 0)
+        {
+            //player morreu
+        }
+        else
+        {
+            filhos - 1;
+        }
     }
 
     public override void Hitted(int damage){
