@@ -74,9 +74,10 @@ public class Esposa : MonoBehaviour
     private void Casar()
     {
         agent.SetDestination(player.position);
-        if (nasceu!)
+        if (nasceu == false)
         {
             Instantiate(filho, transform.position, transform.rotation);
+            nasceu = true;
         }
         
     }
