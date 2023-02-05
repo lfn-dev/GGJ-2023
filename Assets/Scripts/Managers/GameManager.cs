@@ -13,6 +13,15 @@ public class GameManager :  Singleton<GameManager>
     }
 
 
+    public void Pause(){
+        Time.timeScale = 0;
+    }
+
+    public void Resume(){
+        Time.timeScale = 1;
+    }
+
+
     //retorna a posição mais próxima de 'reference'
     Vector3 NearestPosition(Vector3 reference, Vector3[] list){
         int nearIndex = 0;

@@ -5,17 +5,23 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    
+    public Vector3 moveDirection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private float velocity;
+
+    void Start(){
+        if(TryGetComponent(out CharacterStats characterStats)){
+            velocity = characterStats.velocity.GetValue();
+        }
+    }
+
+    public void SetDirection(Vector3 dir){
+        moveDirection = dir.normalized;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(moveDirection * velocity * Time.deltaTime, Space.World);
     }
 }

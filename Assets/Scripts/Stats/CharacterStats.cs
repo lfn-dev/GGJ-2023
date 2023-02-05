@@ -30,7 +30,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die(){
         //this method will be overwritten
-        Debug.Log(transform.name + " died.");
+        Destroy(gameManager);
     }
 
     public virtual void Hitted (int damage){
@@ -38,10 +38,10 @@ public class CharacterStats : MonoBehaviour
         AddHealth(-damage);
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
-        if(!collision.transform.CompareTag(transform.tag)){
-            if(collision.gameObject.TryGetComponent(out CharacterStats characterStats)){
-                Hitted(characterStats.damage.GetValue());    
+    void OnCollisionEnter(Collision col){
+        if(!col.transform.CompareTag(transform.tag)){
+            if(col.gameObject.TryGetComponent(out CharacterStats characterStats)){
+                Hitted(characterStats.damage.GetValue());
             }
         }
     }
