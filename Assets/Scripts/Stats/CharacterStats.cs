@@ -18,7 +18,6 @@ public class CharacterStats : MonoBehaviour
     }
 
     public virtual void AddHealth(int amount){
-        Debug.Log(transform.name + " heal by " + amount);
 
         health.AddValue(amount);
         

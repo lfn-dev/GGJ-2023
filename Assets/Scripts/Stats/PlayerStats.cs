@@ -13,25 +13,18 @@ public class PlayerStats : CharacterStats
         lastTime = Time.time;
     }
 
-    public override void AddHealth(int amount){
-        if(amount < 0){
-            //tomou dano
-            //anim.SetTrigger("Hitted");
-        }
-        base.AddHealth(amount);
-    }
-
     public override void Die()
     {
-        //player morreu
+        gameObject.SetActive(false);
+        //
     }
 
-    public override void Hitted(int damage){
+    public override void Hitted(int amount){
         if(Time.time - lastTime > invencibleTime){
-
-            AddHealth(-damage);
-
+            AddHealth(-amount);
             lastTime = Time.time;
         }
     }
+
+    
 }

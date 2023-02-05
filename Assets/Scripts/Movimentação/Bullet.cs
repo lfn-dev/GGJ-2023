@@ -7,9 +7,12 @@ public class Bullet : MonoBehaviour
 
     public float disapearTime;
 
+    public bool orbit;
+
     [SerializeField]
     private Vector3 moveDirection;
-
+    
+    [SerializeField]
     private float velocity;
 
     void Start(){
@@ -27,6 +30,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(moveDirection * velocity * Time.deltaTime, Space.World);
+        if(!orbit){
+            transform.Rotate(new Vector3(velocity,0,0));
+        }
+        else{
+            transform.Translate(moveDirection * velocity * Time.deltaTime, Space.World);
+        }
     }
 }
