@@ -26,10 +26,10 @@ public class PlayerStats : CharacterStats
             gameObject.SetActive(false);
         //
         } 
-
+    }
     public override void Hitted(int damage){
         if(Time.time - lastTime > invencibleTime){
-            AddHealth(-amount);
+            AddHealth(-damage);
             lastTime = Time.time;
         }
     }
