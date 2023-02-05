@@ -5,17 +5,16 @@ public class CharacterStats : MonoBehaviour
     public Stat health;//how much damage the character can receive before die
     public Stat damage;//damage deal
     public Stat velocity;//movement speed
-
-    protected GameManager gameManager;
-
-    void Awake(){
-        gameManager = GameManager.Instance;
-    }
+    public string ignoreTag = "self";
 
     protected virtual void Start(){
         health.ResetValue();
         damage.ResetValue();
         velocity.ResetValue();
+
+        if(ignoreTag == "self"){
+            ignoreTag = transform.tag;
+        }
     }
 
     public virtual void AddHealth(int amount){
@@ -30,7 +29,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die(){
         //this method will be overwritten
-        Debug.Log(transform.name + " died.");
+        Destroy(gameObject);
     }
 
     public virtual void Hitted (int damage){
@@ -38,10 +37,10 @@ public class CharacterStats : MonoBehaviour
         AddHealth(-damage);
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
-        if(!collision.transform.CompareTag(transform.tag)){
-            if(collision.gameObject.TryGetComponent(out CharacterStats characterStats)){
-                Hitted(characterStats.damage.GetValue());    
+    void OnTriggerEnter(Collider col){
+        if(!col.transform.CompareTag(ignoreTag)){
+            if(col.gameObject.TryGetComponent(out CharacterStats characterStats)){
+                Hitted(characterStats.damage.GetValue());
             }
         }
     }
