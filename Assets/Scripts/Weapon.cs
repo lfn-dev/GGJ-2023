@@ -7,26 +7,31 @@ public class Weapon : MonoBehaviour
     const int colliderBuffer = 32;
     
     public float detectionArea;
-    public Transform holder;
-    public Transform spriteTransform;
+    public float fireRate;
+    public Transform gun;
+    public GameObject ammo;
+    private float lastFire;
+    // public Transform holder;
+    // public Transform spriteTransform;
     
     
     private Transform target = null;
     private Collider[] inSight = new Collider[colliderBuffer];
-    private Vector3 spriteScale;
-    private Vector3 altScale;
-    private Quaternion defaultRotation;
+    //private Vector3 spriteScale;
+    //private Vector3 altScale;
+    //private Quaternion defaultRotation;
 
     private GameManager gameManager;
-    private Transform player;
+    //private Transform player;
 
     void Start(){
         gameManager = GameManager.Instance;
+        lastFire = Time.time;
         
-        defaultRotation = holder.transform.rotation;
-        spriteScale = spriteTransform.localScale;
-        altScale = new Vector3(spriteScale.x * -1, spriteScale.y, spriteScale.z);
-        player = gameManager.GetPlayer().transform;
+        // defaultRotation = holder.transform.rotation;
+        // spriteScale = spriteTransform.localScale;
+        //altScale = new Vector3(spriteScale.x * -1, spriteScale.y, spriteScale.z);
+        //player = gameManager.GetPlayer().transform;
     }
 
     void FixedUpdate(){
@@ -53,9 +58,22 @@ public class Weapon : MonoBehaviour
         else{
             target = null;
         }
+
+        if(target != null){
+            if((Time.time - lastFire) > (1.0f/fireRate)){
+                lastFire = Time.time;
+                Fire();
+            }
+        }
     }
 
-    void LateUpdate(){
+    void Fire(){
+        if(Instantiate(ammo,gun.position,Quaternion.identity).TryGetComponent(out Bullet bullet)){
+            bullet.SetDirection(target.position - gun.position);
+        }
+    }
+
+    /* void LateUpdate(){
         if(target != null){
 
             if(transform.position.x < target.position.x){
@@ -83,7 +101,7 @@ public class Weapon : MonoBehaviour
             holder.rotation = defaultRotation;
             spriteTransform.localScale = spriteScale;
         }
-    }
+    } */
 
     #if UNITY_EDITOR
     void OnDrawGizmos()

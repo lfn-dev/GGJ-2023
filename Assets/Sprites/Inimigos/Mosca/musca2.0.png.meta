@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3409163a76b613f4b9955d4a7dfe024a
+guid: 8270d76399be50449a295ea3be760867
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: musca_0
+      name: musca2.0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67e8b82db46ba944b95568fd8ce43492
-      internalID: 1221458666
+      spriteID: 87e289f6121bca0408ca3e105aaa79f0
+      internalID: 1213190788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: musca_1
+      name: musca2.0_1
       rect:
         serializedVersion: 2
         x: 53
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c6592b3b9eb1944e82c9e277270cfb3
-      internalID: -413684032
+      spriteID: d246c91c5db306343b3d997090812076
+      internalID: 1111674842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: musca_2
+      name: musca2.0_2
       rect:
         serializedVersion: 2
         x: 106
@@ -197,8 +197,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5c99d0031703ac4fbe90a0fbe8499f9
-      internalID: -655678217
+      spriteID: 1dc228022bb1ccc478af287c9adead87
+      internalID: -1156446147
       vertices: []
       indices: 
       edges: []
@@ -206,7 +206,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3fcfbd3fd3483544a8404b2798bcb863
+    spriteID: a0683871166d9ea48a0225b6fe8ddded
     internalID: 0
     vertices: []
     indices: 
@@ -214,9 +214,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      musca_0: 1221458666
-      musca_1: -413684032
-      musca_2: -655678217
+      musca2.0_1: 1111674842
+      musca2.0_2: -1156446147
+      musca2.0_0: 1213190788
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

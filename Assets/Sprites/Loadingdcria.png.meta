@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7fc6a90809547e549872945a855741d4
+guid: 44aebe26ca4ecc541b0f94fc7bc1cd09
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,17 +101,53 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: musca_0
+      name: Loadingdcria_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 53
-        height: 49
+        width: 39
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4168a1ed807750d49a9f86bc2a5353ac
-      internalID: -1493533037
+      spriteID: 06dcd3f25cc644f43ab14e9ccd47bbad
+      internalID: -1435000570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: musca_1
+      name: Loadingdcria_1
       rect:
         serializedVersion: 2
-        x: 53
+        x: 39
         y: 0
-        width: 53
-        height: 49
+        width: 39
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b3fbacfcc272e6438fcb656b911795a
-      internalID: 1671589129
+      spriteID: 2a0b3ff40ee23dc4a936602c0e12cc5e
+      internalID: -1223630072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: musca_2
+      name: Loadingdcria_2
       rect:
         serializedVersion: 2
-        x: 106
+        x: 78
         y: 0
-        width: 53
-        height: 49
+        width: 39
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,8 +197,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceb992f8b5721f6489138ae27eea5793
-      internalID: 956725088
+      spriteID: 2b9498e429fd8754c8522f0f01703e41
+      internalID: -1952314444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Loadingdcria_3
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 0
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba0bea68c4f29e242a1c3efce2940735
+      internalID: 1534541391
       vertices: []
       indices: 
       edges: []
@@ -170,7 +227,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 973020ef0cbe33449922ac0c90214853
+    spriteID: e8b808bd46d7f88448cf5f389483b4c4
     internalID: 0
     vertices: []
     indices: 
@@ -178,9 +235,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      musca_0: -1493533037
-      musca_1: 1671589129
-      musca_2: 956725088
+      Loadingdcria_3: 1534541391
+      Loadingdcria_2: -1952314444
+      Loadingdcria_1: -1223630072
+      Loadingdcria_0: -1435000570
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

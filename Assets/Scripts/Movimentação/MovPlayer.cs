@@ -17,6 +17,10 @@ public class MovPlayer : MonoBehaviour
     {
         flipped = false;
         defaultScale = transform.localScale;
+
+        if(TryGetComponent(out CharacterStats characterStats)){
+            velocidade = characterStats.velocity.GetValue();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -38,8 +42,8 @@ public class MovPlayer : MonoBehaviour
 
     public void moverPlayer()
     {
-        Vector3 movment = new Vector3(move.x, 0f, move.y);
-        transform.Translate(movment * velocidade * Time.deltaTime, Space.World);
+        Vector3 mov = new Vector3(move.x, 0f, move.y);
+        transform.Translate(mov * velocidade * Time.deltaTime, Space.World);
     }
 
     public void Flip()

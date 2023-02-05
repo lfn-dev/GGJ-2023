@@ -5,7 +5,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    public Vector3 moveDirection;
+    public float disapearTime;
+
+    [SerializeField]
+    private Vector3 moveDirection;
 
     private float velocity;
 
@@ -13,6 +16,8 @@ public class Bullet : MonoBehaviour
         if(TryGetComponent(out CharacterStats characterStats)){
             velocity = characterStats.velocity.GetValue();
         }
+        
+        Destroy(gameObject,disapearTime);
     }
 
     public void SetDirection(Vector3 dir){

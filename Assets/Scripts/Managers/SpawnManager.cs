@@ -127,9 +127,10 @@ public class SpawnManager : MonoBehaviour
     void CreateObj(Vector3 pos, GameObject obj, int qt){
         for (int i = 0; i < qt; i++)
         {
-            Vector3 offset = Random.insideUnitCircle * spawnRadius;
+            Vector2 offset = Random.insideUnitCircle * spawnRadius;
+            pos = new Vector3(pos.x + offset.x,pos.y,pos.z + offset.y);
 
-            GameObject.Instantiate(obj, pos + offset, Quaternion.identity);
+            GameObject.Instantiate(obj, pos, Quaternion.identity);
         }
     }
 
