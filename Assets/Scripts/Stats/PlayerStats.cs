@@ -8,18 +8,26 @@ public class PlayerStats : CharacterStats
 
     private float lastTime;
 
-    protected override void Start (){
+    public int filhos;
+    //public GameObject[] ltsFilhos;
+
+    protected override void Start ()
+    {
+
+        //ltsFilhos = new List<GameObject>();
         base.Start();
         lastTime = Time.time;
     }
 
     public override void Die()
     {
-        gameObject.SetActive(false);
+        if (filhos <= 0) 
+        {
+            gameObject.SetActive(false);
         //
-    }
+        } 
 
-    public override void Hitted(int amount){
+    public override void Hitted(int damage){
         if(Time.time - lastTime > invencibleTime){
             AddHealth(-amount);
             lastTime = Time.time;

@@ -11,6 +11,9 @@ public class Esposa : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    private bool nasceu = false;
+    public GameObject filho;
+
     
     //Patroling
     public Vector3 walkPoint;
@@ -71,6 +74,12 @@ public class Esposa : MonoBehaviour
     private void Casar()
     {
         agent.SetDestination(player.position);
+        if (nasceu == false)
+        {
+            Instantiate(filho, transform.position, transform.rotation);
+            nasceu = true;
+        }
+        
     }
   
 

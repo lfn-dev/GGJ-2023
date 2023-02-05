@@ -7,16 +7,20 @@ public class Filho : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
+      
+    public PlayerStats play;
 
-    public int filho;
-
+    
     // Start is called before the first frame update
     void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        play = GameObject.Find("Player").GetComponent<PlayerStats>();
+
+
         agent.SetDestination(player.position);
-        filho += 1;
+        play.filhos += 1;
     }
 
     // Update is called once per frame
