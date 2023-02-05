@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Cenario
+  - Filho
   layers:
   - Default
   - TransparentFX

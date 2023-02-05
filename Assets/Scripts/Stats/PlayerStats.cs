@@ -9,6 +9,7 @@ public class PlayerStats : CharacterStats
     private float lastTime;
 
     public int filhos;
+    public GameObject filhoMorto;
     //public GameObject[] ltsFilhos;
 
     protected override void Start ()
@@ -21,6 +22,12 @@ public class PlayerStats : CharacterStats
 
     public override void Die()
     {
+        if(filhos >= 0)
+        {
+            filhoMorto = GameObject.FindWithTag("Filho");
+            filhoMorto.SetActive(false);
+
+        }
         if (filhos <= 0) 
         {
             gameObject.SetActive(false);
