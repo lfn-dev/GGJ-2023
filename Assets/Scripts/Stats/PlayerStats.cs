@@ -9,8 +9,12 @@ public class PlayerStats : CharacterStats
     private float lastTime;
 
     public int filhos;
+    //public GameObject[] ltsFilhos;
 
-    protected override void Start (){
+    protected override void Start ()
+    {
+
+        //ltsFilhos = new List<GameObject>();
         base.Start();
         lastTime = Time.time;
     }
@@ -25,14 +29,11 @@ public class PlayerStats : CharacterStats
 
     public override void Die()
     {
-        if(filhos >= 0)
+        if (filhos >= 0) 
         {
             //player morreu
-        }
-        else
-        {
-            filhos - 1;
-        }
+        } 
+
     }
 
     public override void Hitted(int damage){
