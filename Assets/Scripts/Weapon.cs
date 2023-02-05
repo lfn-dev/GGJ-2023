@@ -8,27 +8,29 @@ public class Weapon : MonoBehaviour
     
     public float detectionArea;
     public Transform holder;
-    public float aimSpeed = 0.5f;
     public Transform spriteTransform;
     
+    
     private Transform target = null;
-    private Collider2D[] inSight = new Collider2D[colliderBuffer];
+    private Collider[] inSight = new Collider[colliderBuffer];
     private Vector3 spriteScale;
     private Vector3 altScale;
     private Quaternion defaultRotation;
 
     private GameManager gameManager;
+    private Transform player;
 
     void Start(){
         gameManager = GameManager.Instance;
         
         defaultRotation = holder.transform.rotation;
         spriteScale = spriteTransform.localScale;
-        altScale = new Vector3(spriteScale.x, spriteScale.y * -1, spriteScale.z);
+        altScale = new Vector3(spriteScale.x * -1, spriteScale.y, spriteScale.z);
+        player = gameManager.GetPlayer().transform;
     }
 
     void FixedUpdate(){
-        float collQt = Physics2D.OverlapCircleNonAlloc(
+        float collQt = Physics.OverlapSphereNonAlloc(
             transform.position, 
             detectionArea, 
             inSight,
@@ -53,16 +55,28 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    void Update(){
+    void LateUpdate(){
         if(target != null){
-            holder.right = target.position - transform.position;
 
-            //flipping sprite
-            float rotZ = holder.rotation.eulerAngles.z;
-            if (rotZ > 90 && rotZ < 270){
-                spriteTransform.localScale = altScale;
-            }else{
-                spriteTransform.localScale = spriteScale;
+            if(transform.position.x < target.position.x){
+                if(player.localScale.x > 0){
+                    holder.rotation = defaultRotation;
+                    //spriteTransform.localScale = spriteScale;
+                }
+                else{
+                    holder.eulerAngles = defaultRotation.eulerAngles + new Vector3(0,180,0);
+                    //spriteTransform.localScale = altScale;
+                }
+            }
+            else{
+                if(player.localScale.x < 0){
+                    holder.rotation = defaultRotation;
+                    //spriteTransform.localScale = spriteScale;
+                }
+                else{
+                    holder.eulerAngles = defaultRotation.eulerAngles + new Vector3(0,180,0);
+                    //spriteTransform.localScale = altScale;
+                }
             }
         }
         else{

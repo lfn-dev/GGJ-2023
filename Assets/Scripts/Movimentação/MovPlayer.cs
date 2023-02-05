@@ -9,11 +9,14 @@ public class MovPlayer : MonoBehaviour
     public Animator anim;
     public GameObject player;
     private Vector2 move;
-    public bool olhandoDir;
+    public bool flipped;
+
+    private Vector3 defaultScale;
 
     void Start()
     {
-        olhandoDir = true;
+        flipped = false;
+        defaultScale = transform.localScale;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -43,12 +46,14 @@ public class MovPlayer : MonoBehaviour
     {
         if (move.x > 0)
         {
-            gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            transform.localScale = defaultScale;
+            flipped = false;
         }
 
         if (move.x < 0)
         {
-            gameObject.transform.localScale = new Vector3(0.5f , 0.5f , -0.5f);
+            transform.localScale = new Vector3(-defaultScale.x, defaultScale.y, defaultScale.z);
+            flipped = true;
         }
 
     }
